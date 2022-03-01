@@ -25,6 +25,14 @@ const Quiz = () => {
         setCurrentQuestion(currentQuestion => currentQuestion + 1)
     }
 
+    const finishQuiz = () =>{
+        if(questions[currentQuestion].answer === optionChosen){
+            console.log('Correct answer');
+            setScore(score => score + 1);
+        }
+        setGameState('finished')
+    }
+
     return (
         <div className='quiz'>
             <h1>{questions[currentQuestion].propmt}</h1>
@@ -35,9 +43,9 @@ const Quiz = () => {
                 <button onClick={()=>{chooseOption('optionD')}}>{questions[currentQuestion].optionD}</button>
             </div>
             {currentQuestion === questions.length -1 ? (
-            <button onClick={()=>{setGameState('finished')}}>Finish Quiz</button>
+            <button className='finish-question' onClick={finishQuiz}>Finish Quiz</button>
             ):(
-            <button onClick={nextQuestion}>Next Question</button>
+            <button className='next-question' onClick={nextQuestion}>Next Question</button>
             )}
         </div>
     )

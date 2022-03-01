@@ -49,6 +49,18 @@
   flex-direction: column;
 }
 
+.finish-question , .next-question{
+  width: 200px;
+}
+
+.quiz h1{
+  color: #fff;
+}
+
+.endscreen h1 , h2{
+  color: #fff;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

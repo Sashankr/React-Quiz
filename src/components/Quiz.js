@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../App.css'
 import { questions } from '../helpers/Questions'
+import { GameStateContext } from '../helpers/Contexts'
 
 const Quiz = () => {
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen,setOptionChosen] = useState('');
+    const {score,setScore,setGameState} = useContext(GameStateContext);
 
     const chooseOption = (option) =>{
         setOptionChosen(option)
@@ -14,6 +16,7 @@ const Quiz = () => {
     const nextQuestion = () => {
         if(questions[currentQuestion].answer === optionChosen){
             console.log('Correct answer');
+            setScore(score => score + 1);
         }
         else{
             console.log('Wrong anser');
@@ -31,7 +34,11 @@ const Quiz = () => {
                 <button onClick={()=>{chooseOption('optionC')}}>{questions[currentQuestion].optionC}</button>
                 <button onClick={()=>{chooseOption('optionD')}}>{questions[currentQuestion].optionD}</button>
             </div>
+            {currentQuestion === questions.length -1 ? (
+            <button onClick={()=>{setGameState('finished')}}>Finish Quiz</button>
+            ):(
             <button onClick={nextQuestion}>Next Question</button>
+            )}
         </div>
     )
 }

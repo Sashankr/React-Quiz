@@ -38,6 +38,17 @@
   font-weight: 600;
 }
 
+.quiz{
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
